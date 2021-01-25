@@ -55,13 +55,13 @@ class Apple extends Component {
           <div className="section">
             <div className="head">当前</div>
             <div className="content">
-              {notEatenQuantity}个苹果，{notEatenWeight}克
+              {EatenQuantity}个苹果，{EatenWeight}克
             </div>
           </div>
           <div className="section">
             <div className="head">已吃掉</div>
             <div className="content">
-              {EatenQuantity}个苹果，{EatenWeight}克
+              {notEatenQuantity}个苹果，{notEatenWeight}克
             </div>
           </div>
         </div>
