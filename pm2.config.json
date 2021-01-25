@@ -1,0 +1,9 @@
+{
+  "apps": [
+    {
+      "name": "React Mobx",
+      "script": "npm",
+      "args": "start"
+    }
+  ]
+}

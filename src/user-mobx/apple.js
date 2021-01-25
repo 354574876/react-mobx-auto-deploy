@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
-import { observer } from 'mobx-react';
-
+import React, { Component } from 'react'
+import { observer } from 'mobx-react'
+import '../styles/appleItem.scss'
+import '../styles/appleBasket.scss'
 @observer
 class AppleItem extends Component {
   render() {
-    let { apple, eatApple } = this.props;
+    let { apple, eatApple } = this.props
     return (
       <div className="appleItem">
         <div className="apple">
@@ -18,14 +19,14 @@ class AppleItem extends Component {
           <button onClick={() => eatApple(apple.id)}> 吃掉 </button>
         </div>
       </div>
-    );
+    )
   }
 }
 
 @observer
 class Apple extends Component {
   getAppleItem() {
-    let data = [];
+    let data = []
     this.props.store.apples.forEach(apple => {
       if (!apple.isEaten) {
         data.push(
@@ -34,18 +35,18 @@ class Apple extends Component {
             apple={apple}
             key={apple.id}
           />
-        );
+        )
       }
-    });
-    if (!data.length) return <div>its empth</div>;
-    return data;
+    })
+    if (!data.length) return <div className="empty">its empty</div>
+    return data
   }
   render() {
-    let { status } = this.props.store;
+    let { status, isPicking, pickApple, buttonText } = this.props.store
     let {
       appleNow: { quantity: notEatenQuantity, weight: notEatenWeight },
-      appleEaten: { quantity: EatenQuantity, weight: EatenWeight }
-    } = status;
+      appleEaten: { quantity: EatenQuantity, weight: EatenWeight },
+    } = status
     return (
       <div className="appleBusket">
         <div className="title">苹果篮子</div>
@@ -67,12 +68,17 @@ class Apple extends Component {
 
         <div className="appleList">{this.getAppleItem()}</div>
 
-        {/* <div className="btn-div">
-                <button  className={isPicking ? 'disabled' : ''}  onClick={() => pickApple() } >{buttonText}</button>
-            </div> */}
+        <div className="btn-div">
+          <button
+            className={isPicking ? 'disabled' : ''}
+            onClick={() => pickApple()}
+          >
+            {buttonText}
+          </button>
+        </div>
       </div>
-    );
+    )
   }
 }
 
-export default Apple;
+export default Apple
